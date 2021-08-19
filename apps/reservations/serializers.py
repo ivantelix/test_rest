@@ -25,7 +25,9 @@ class ReservationSerializers(serializers.ModelSerializer):
             'client': instance.client.firstname,
             'room': instance.room.name,
             'status': instance.status,
-            'date': instance.date
+            'date': instance.date,
+            'date_end': instance.date_end,
+            'days': (instance.date_end - instance.date).days
         }
 
 

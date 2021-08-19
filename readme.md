@@ -1,52 +1,12 @@
-## Project Flow Detail:
-
-Project API rest test with python Django and Rest Framework.
-
-```
-The project consists of 4 Entities:
-
-- Clients
-- Rooms
-- Reservations
-- Invoices
-```
-
-The flow is:
-```
-1- The information of the parent entities should be created if they do not exist, 
-these being the entities: Rooms and Clients.
-
-2- Once the rooms already exist and the previous registration of the client to 
-reserve has been made. The reservation is made.
-
-NOTE: The reservation when created takes the status "PENDING", indicating 
-that the reservation has not yet been paid.
-
-3- As the last step, the payment of the reservation is registered, which can 
-automatically update the status of the reservation to paid after registering 
-the payment.
-```
-
 ### Configuration 
-- Create and activate the virtualenv:
-    - virtualenv -p python3 name_your_virtualenv
-    - cd name_your_virtualenv
-    - ``Linux``
-        -  source bin/activate
-    - ``Windows``
-        -   Scripts\activate
-- Clone project:
-    - git clone https://github.com/ivantelix/test_rest.git
-- In a terminal go to root foolder project and execute:  
-    - pip install -r requirements.txt
+- Clone repository
+- In a terminal go to root foolder and execute:
+    - python manage.py migrate
+    - python manage.py createsuperuser
     - python manage.py runserver
     
 ### Acces to adminsite with the Url:
-- localhost:8000/admin/
-    - ``username:`` admin
-    - ``password:``admin
-    
-``Here can show and manager the information of entities/``
+- localhost:8000/admin/ Type the **username** and **password** 
 
 ### Use of API:
 
@@ -55,7 +15,6 @@ the payment.
     -   rooms/
     -   clients/
     -   reservations/
-    -   invoices/
 
 
 -   Methods http of endpoints:
@@ -65,27 +24,27 @@ the payment.
 ## Examples make request:
 -   GET Request for get all records:
     #### METHOD: GET
-    -   localhost:8000/api/clients/
+    -   localhost:8000/api/client/
     -   localhost:8000/api/rooms/
     -   localhost:8000/api/reservations/
     -   localhost:8000/api/invoices/
     
     #### METHOD: GET
 -   Request get record by id
-    -   localhost:8000/api/clients/{id}/
+    -   localhost:8000/api/client/{id}/
     -   localhost:8000/api/rooms/{id}/
     -   localhost:8000/api/reservations/{id}/
     -   localhost:8000/api/invoices/{id}/
 
     #### METHOD: POST
 -   POST Request for create a new record
-    -   localhost:8000/api/clients/
+    -   localhost:8000/api/client/
         ```
             {
                 "firstname": (string required),
                 "lastname": string optional,
                 "dni": string required unique,
-                "address": string optional
+                "address": string optional,
             }
         ```
     -   localhost:8000/api/rooms/
@@ -96,7 +55,7 @@ the payment.
                 "type_room": string defaults required,
                 "num_beds": integer required,
                 "amount": float required,
-                "status": string defaults required
+                "status": string defaults required,
             }
         
             type_room values = ["SIMPLE", "DOUBLE", "TRIPLE", "FAMILY"]
@@ -106,7 +65,8 @@ the payment.
         ```
             {
                 "client": integer required,
-                "room": integer required
+                "room": integer required,
+                "date_end": string required format (YYYY-MM-DD)
             }
         ```
     -   localhost:8000/api/invoices/
@@ -125,7 +85,7 @@ the payment.
     
     #### METHOD: put
 -   PUT Request for create a new record
-    -   localhost:8000/api/clients/{id}/
+    -   localhost:8000/api/client/{id}/
         ```
             {
                 "firstname": (string required),
@@ -153,12 +113,13 @@ the payment.
             {
                 "client": integer required,
                 "room": integer required,
+                "date_end": string required format (YYYY-MM-DD)
             }
         ```
         
     #### METHOD: DELETE
 - DELETE request for logical deletion of records 
-    -   localhost:8000/api/clients/{id}/
+    -   localhost:8000/api/client/{id}/
        
     -   localhost:8000/api/rooms/{id}/
         

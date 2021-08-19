@@ -57,7 +57,7 @@ class Reservation(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE, blank=False, null=False)
     status = models.CharField(max_length=15, choices=CHOICE_RESERVATION, default="PENDING", blank=False, null=False)
     date = models.DateField(verbose_name="Date Reservation", auto_now=True)
-    date_end = models.DateField(verbose_name="Date End Reservation", auto_now=True)
+    date_end = models.DateField(verbose_name="Date End Reservation", blank=Fasle, null=False)
 
     class Meta:
         verbose_name = 'Reservation'
