@@ -1,12 +1,23 @@
 ### Configuration 
-- Clone repository
-- In a terminal go to root foolder and execute:
-    - python manage.py migrate
-    - python manage.py createsuperuser
+- Create and activate the virtualenv:
+    - virtualenv -p python3 name_your_virtualenv
+    - cd name_your_virtualenv
+    - ``Linux``
+        -  source bin/activate
+    - ``Windows``
+        -   Scripts\activate
+- Clone project:
+    - git clone https://github.com/ivantelix/test_rest.git
+- In a terminal go to root foolder project and execute:  
+    - pip install -r requirements.txt
     - python manage.py runserver
     
 ### Acces to adminsite with the Url:
-- localhost:8000/admin/ Type the **username** and **password** 
+- localhost:8000/admin/
+    - ``username:`` admin
+    - ``password:``admin
+    
+``Here can show and manager the information of entities/``
 
 ### Use of API:
 
@@ -15,6 +26,7 @@
     -   rooms/
     -   clients/
     -   reservations/
+    -   invoices/
 
 
 -   Methods http of endpoints:
@@ -24,27 +36,27 @@
 ## Examples make request:
 -   GET Request for get all records:
     #### METHOD: GET
-    -   localhost:8000/api/client/
+    -   localhost:8000/api/clients/
     -   localhost:8000/api/rooms/
     -   localhost:8000/api/reservations/
     -   localhost:8000/api/invoices/
     
     #### METHOD: GET
 -   Request get record by id
-    -   localhost:8000/api/client/{id}/
+    -   localhost:8000/api/clients/{id}/
     -   localhost:8000/api/rooms/{id}/
     -   localhost:8000/api/reservations/{id}/
     -   localhost:8000/api/invoices/{id}/
 
     #### METHOD: POST
 -   POST Request for create a new record
-    -   localhost:8000/api/client/
+    -   localhost:8000/api/clients/
         ```
             {
                 "firstname": (string required),
                 "lastname": string optional,
                 "dni": string required unique,
-                "address": string optional,
+                "address": string optional
             }
         ```
     -   localhost:8000/api/rooms/
@@ -55,7 +67,7 @@
                 "type_room": string defaults required,
                 "num_beds": integer required,
                 "amount": float required,
-                "status": string defaults required,
+                "status": string defaults required
             }
         
             type_room values = ["SIMPLE", "DOUBLE", "TRIPLE", "FAMILY"]
@@ -84,7 +96,7 @@
     
     #### METHOD: put
 -   PUT Request for create a new record
-    -   localhost:8000/api/client/{id}/
+    -   localhost:8000/api/clients/{id}/
         ```
             {
                 "firstname": (string required),
@@ -117,7 +129,7 @@
         
     #### METHOD: DELETE
 - DELETE request for logical deletion of records 
-    -   localhost:8000/api/client/{id}/
+    -   localhost:8000/api/clients/{id}/
        
     -   localhost:8000/api/rooms/{id}/
         
@@ -142,7 +154,7 @@
         -   search= The client can be search for the firstname or the DNI fields.
     
     -   localhost:8000/api/search?type=client (This request get all client)
-    -   localhost:8000/api/search?type=client&search=Client 1 (This request get the client by the firstname)
+    -   localhost:8000/api/search?type=client&search=Luis (This request get the client by the firstname)
     -   localhost:8000/api/search?type=client&search=123 (This request get the client by the dni)
     
 -   Request search rooms: 
@@ -162,7 +174,7 @@
         -   search= The Reservation can be search for the date of create reservation and status fields.
     
     -   localhost:8000/api/search?type=reservation (This request get all reservation)
-    -   localhost:8000/api/search?type=reservation&search=2021-08-17 (This request get the reservations from this date)
+    -   localhost:8000/api/search?type=reservation&search=YYYY-MM-DD (This request get the reservations from the date)
     -   localhost:8000/api/search?type=reservation&search=PENDING (This request get the reservations with status PENDING. 
         Other values for this field are "PAID", "DELETED")
         
@@ -172,7 +184,7 @@
         -   search= The Invoice can be search for the code, type payment or date.
     
     -   localhost:8000/api/search?type=invoice (This request get all invoices)
-    -   localhost:8000/api/search?type=invoice&search=CADS1234 (This request get the invoice with code equal to 
+    -   localhost:8000/api/search?type=invoice&search=asd654qw (This request get the invoice with code equal to 
             the string).
     -   localhost:8000/api/search?type=invoice&search=CC (This request get the invoice with type_payment field 
             CC "Credit Card". Other values for this search are "CASH").
