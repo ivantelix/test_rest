@@ -1,3 +1,32 @@
+## Project Flow Detail:
+
+Project API rest test with python Django and Rest Framework.
+
+```
+The project consists of 4 Entities:
+
+- Clients
+- Rooms
+- Reservations
+- Invoices
+```
+
+The flow is:
+```
+1- The information of the parent entities should be created if they do not exist, 
+these being the entities: Rooms and Clients.
+
+2- Once the rooms already exist and the previous registration of the client to 
+reserve has been made. The reservation is made.
+
+NOTE: The reservation when created takes the status "PENDING", indicating 
+that the reservation has not yet been paid.
+
+3- As the last step, the payment of the reservation is registered, which can 
+automatically update the status of the reservation to paid after registering 
+the payment.
+```
+
 ### Configuration 
 - Create and activate the virtualenv:
     - virtualenv -p python3 name_your_virtualenv
@@ -154,7 +183,7 @@
         -   search= The client can be search for the firstname or the DNI fields.
     
     -   localhost:8000/api/search?type=client (This request get all client)
-    -   localhost:8000/api/search?type=client&search=Luis (This request get the client by the firstname)
+    -   localhost:8000/api/search?type=client&search=Client 1 (This request get the client by the firstname)
     -   localhost:8000/api/search?type=client&search=123 (This request get the client by the dni)
     
 -   Request search rooms: 
@@ -174,7 +203,7 @@
         -   search= The Reservation can be search for the date of create reservation and status fields.
     
     -   localhost:8000/api/search?type=reservation (This request get all reservation)
-    -   localhost:8000/api/search?type=reservation&search=YYYY-MM-DD (This request get the reservations from the date)
+    -   localhost:8000/api/search?type=reservation&search=2021-08-17 (This request get the reservations from this date)
     -   localhost:8000/api/search?type=reservation&search=PENDING (This request get the reservations with status PENDING. 
         Other values for this field are "PAID", "DELETED")
         
@@ -184,7 +213,7 @@
         -   search= The Invoice can be search for the code, type payment or date.
     
     -   localhost:8000/api/search?type=invoice (This request get all invoices)
-    -   localhost:8000/api/search?type=invoice&search=asd654qw (This request get the invoice with code equal to 
+    -   localhost:8000/api/search?type=invoice&search=CADS1234 (This request get the invoice with code equal to 
             the string).
     -   localhost:8000/api/search?type=invoice&search=CC (This request get the invoice with type_payment field 
             CC "Credit Card". Other values for this search are "CASH").
