@@ -1,12 +1,12 @@
 ### Configuration 
 - Clone repository
-- In a terminal go to root foolder and execute:
+- In a terminal go to root folder and execute:
     - python manage.py migrate
     - python manage.py createsuperuser
     - python manage.py runserver
     
 ### Acces to adminsite with the Url:
-- localhost:8000/admin/ Type the **username** and **password** 
+- localhost:8000/admin/ Type the **username*=admin and **password**=admin 
 
 ### Use of API:
 
