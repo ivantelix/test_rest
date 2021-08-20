@@ -6,7 +6,7 @@
     - python manage.py runserver
     
 ### Acces to adminsite with the Url:
-- localhost:8000/admin/ Type the **username*=admin and **password**=admin 
+- localhost:8000/admin/ Type the **username**=admin and **password**=admin 
 
 ### Use of API:
 
@@ -15,6 +15,7 @@
     -   rooms/
     -   clients/
     -   reservations/
+    -   invoices/
 
 
 -   Methods http of endpoints:
@@ -24,7 +25,7 @@
 ## Examples make request:
 -   GET Request for get all records:
     #### METHOD: GET
-    -   localhost:8000/api/client/
+    -   localhost:8000/api/clients/
     -   localhost:8000/api/rooms/
     -   localhost:8000/api/reservations/
     -   localhost:8000/api/invoices/
@@ -38,7 +39,7 @@
 
     #### METHOD: POST
 -   POST Request for create a new record
-    -   localhost:8000/api/client/
+    -   localhost:8000/api/clients/
         ```
             {
                 "firstname": (string required),
@@ -85,7 +86,7 @@
     
     #### METHOD: put
 -   PUT Request for create a new record
-    -   localhost:8000/api/client/{id}/
+    -   localhost:8000/api/clients/{id}/
         ```
             {
                 "firstname": (string required),
@@ -119,7 +120,7 @@
         
     #### METHOD: DELETE
 - DELETE request for logical deletion of records 
-    -   localhost:8000/api/client/{id}/
+    -   localhost:8000/api/clients/{id}/
        
     -   localhost:8000/api/rooms/{id}/
         
@@ -132,7 +133,7 @@
 ## Search request 
 -   Base URL: localhost:8000/search
 -   Params: 
-    -   type=string - The "TYPE" parameter can receive the values ["client", "room", "reservation"]
+    -   type=string - The "TYPE" parameter can receive the values ["client", "room", "reservation", "invoice"]
     -   search=(string,integer,date) - The "SEARCH" parameter can receive the values numeric, 
         date with format (YYYY-MM-DD), string
         
@@ -144,7 +145,7 @@
         -   search= The client can be search for the firstname or the DNI fields.
     
     -   localhost:8000/api/search?type=client (This request get all client)
-    -   localhost:8000/api/search?type=client&search=Client 1 (This request get the client by the firstname)
+    -   localhost:8000/api/search?type=client&search=Luis (This request get the client by the firstname)
     -   localhost:8000/api/search?type=client&search=123 (This request get the client by the dni)
     
 -   Request search rooms: 
@@ -155,7 +156,7 @@
     -   localhost:8000/api/search?type=room (This request get all room)
     -   localhost:8000/api/search?type=room&search=Habitacion Simple (This request get the client by the name)
     -   localhost:8000/api/search?type=room&search=SIMPLE (This request get the room with type_room value is SIMPLE. 
-        Other values are "DOBLE", "TRIPLE", "FAMILIAR")
+        Other values are "DOUBLE", "TRIPLE", "FAMILY")
     -   localhost:8000/api/search?type=room&search=FREE (This request get the room are FREE. Other value is OCCUPIED)
 
 -   Request search reservations: 
