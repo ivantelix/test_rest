@@ -85,7 +85,7 @@
       as is done in the POST request, but you have to add the id in the URL, for example:
     
     #### METHOD: put
--   PUT Request for create a new record
+-   PUT Request for update a record
     -   localhost:8000/api/clients/{id}/
         ```
             {
@@ -131,7 +131,7 @@
 
 
 ## Search request 
--   Base URL: localhost:8000/search
+-   Base URL: localhost:8000/api/search
 -   Params: 
     -   type=string - The "TYPE" parameter can receive the values ["client", "room", "reservation", "invoice"]
     -   search=(string,integer,date) - The "SEARCH" parameter can receive the values numeric, 
